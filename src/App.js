@@ -1,23 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
 
+import { Route, Switch } from "react-router";
+import MemberList from './components/MemberList';
+import Home from './components/Home';
+import NavBar from "./components/NavBar";
+import FormAddMember from "./components/FormAddMember";
+import FormAddBook from "./components/FormAddBook";
+
+import ProfileMembers from "./components/ProfileMembers";
+import BookList from "./components/BookList";
+import DetailsOfBook from "./components/DetailsOfBook";
+import { GlobalStyle } from "./styles";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <div   >
+      <GlobalStyle/>
+      <NavBar/>
+      <Switch>
+      <Route path="/Member/:membersSlug">
+      <ProfileMembers/>
+      </Route>
+
+      <Route path="/Book/:booksSlug">
+      <DetailsOfBook/>
+      </Route>
+
+      <Route path="/NewBook">
+      <FormAddBook/>
+      </Route>
+
+      <Route path="/NewMember">
+      <FormAddMember/>
+      </Route>
+
+      <Route path="/MemberList">
+      <MemberList/>
+      </Route>
+
+      <Route path="/BookList">
+      <BookList/>
+      </Route>
+      
+     
+      <Route path="/">
+      <Home/>
+      </Route>
+      </Switch>
     </div>
   );
 }
